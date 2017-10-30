@@ -1,0 +1,42 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+li {
+  display: block;
+}
+
+/*a链接去下划线*/
+a {
+	text-decoration: none;
+}
+
+.table-a table {
+  border:1px solid red;
+  background-color: #53C8F7;
+}
+
+.table-a table tr td {
+	box-sizing:border-box;
+	border:1px solid green;
+}
+
+
