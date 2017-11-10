@@ -28,8 +28,14 @@
 //     return "这是".$name."的路由";
 // });
 
+//后台
+Route::get('/admin', 'adminController@index');
+
+
+
 //通过路由访问控制器中的方法
 Route::get('/', 'DotaUserController@index');
+
 
 // //通过路由访问控制器中的方法
 Route::get('DotaUserinfo/{id}', 'DotaUserController@show');
@@ -39,6 +45,9 @@ Route::get('DotaUser/create', 'DotaUserController@create');
 
 // //访问store
 Route::post('DotaUser/store', 'DotaUserController@store');
+
+//修改DOTAName
+Route::post('DotaUser/editDotaName', 'DotaUserController@editDotaName');
 
 //	匹配页
 Route::get('DotaUser/matching', 'DotaUserController@matching');

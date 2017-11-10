@@ -27,7 +27,7 @@ class DotaUserController extends Controller
 
 		$dotauser = new \App\DotaUser();
 		
-		$dotausers = $dotauser->latest()->get();//查询出来的是json数据  中文会显示乱码  循环时$v->字段名		
+		$dotausers = $dotauser->orderBy('LadderTournament','DESC')->latest()->get();//查询出来的是json数据  中文会显示乱码  循环时$v->字段名		
 		
 		return view('dota.lists',compact('dotausers'));
 	}
@@ -42,9 +42,6 @@ class DotaUserController extends Controller
 	*
 	*@return 
 	*/
-	
-
-
 	public function create()
 	{
 		return view('dota.create');
@@ -78,10 +75,10 @@ class DotaUserController extends Controller
 	}
 
 	//时间设置——没用到
-	public function setPublishedAtAttribute($date)
-	{
-		return $this->attributes['publish_at'] = Carbon::createFromFormat('Y-m-d',$date);
-	}
+	// public function setPublishedAtAttribute($date)
+	// {
+	// 	return $this->attributes['publish_at'] = Carbon::createFromFormat('Y-m-d',$date);
+	// }
 
 	public function matching()
 	{
@@ -116,6 +113,26 @@ class DotaUserController extends Controller
 			
 		
 		return view('dota.matching',compact('dotausers'));
+	}
+
+	public function editDotaName () 
+	{
+		if($_POST['DOTAName']){
+			$id = $_POST['userid'];
+			$DOTAName = $_POST['DOTAName'];
+			$DotaUser = new \App\DotaUser();
+			$DotaUser->find($id);
+			$res = $DotaUser->where("id",$id)->update(["DOTAName"=>"$DOTAName"]);
+			// var_dump($res);exit;
+			if($res){
+				echo json_encode(true);
+			}else{
+				echo json_encode(false);
+			}
+			
+		}else{
+			echo json_encode(false);
+		}
 	}
 
 
