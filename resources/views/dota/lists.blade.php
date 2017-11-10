@@ -81,7 +81,7 @@
 						datatype : "json",
 						success : function(data){
 							console.log(data);
-							if (data == true) {
+							if (data) {
 								alert('修改成功');
 							}else{
 								alert('修改失败');
@@ -91,7 +91,6 @@
 				}else {
 					td.html(newtxt);
 				}
-				
 			});
 		});
 	});
